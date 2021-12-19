@@ -32,7 +32,7 @@ def password_generator():
 
 def save_password():
     global cur_data
-    website = website_entry.get().capitalize()
+    website = website_entry.get().upper()
     email = email_entry.get()
     password = password_entry.get()
     email_used = {
@@ -76,7 +76,7 @@ def save_password():
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 
 def search():
-    website = website_entry.get().capitalize()
+    website = website_entry.get().upper()
     if len(website) == 0:
         messagebox.showinfo(message="Please make sure to fill out the Website field!")
     else:
@@ -85,12 +85,12 @@ def search():
                 cur_data = json.load(data)
                 email = cur_data[website]["email"]
                 password = cur_data[website]["password"]
-                messagebox.showinfo(message=f"Website: {website}\nEmail: {email}\nPassword: {password}\n"
+                messagebox.showinfo(message=f"Website: {website.capitalize()}\nEmail: {email}\nPassword: {password}\n"
                                                 f"Password has been copied to clipboard.")
                 pyperclip.copy(password)
 
         except (KeyError, FileNotFoundError, JSONDecodeError) as e:
-            messagebox.showinfo(message=f"You have not stored password for {website}")
+            messagebox.showinfo(message=f"You have not stored password for {website.capitalize()}.")
 
 
 # ---------------------------- UI SETUP ------------------------------- #
