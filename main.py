@@ -4,6 +4,7 @@ from tkinter import messagebox
 import random
 import pyperclip
 import json
+import string
 
 YELLOW = "#FFEBA1"
 VIOLET = "#6F69AC"
@@ -11,15 +12,14 @@ FONT_NAME = "Garamond"
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
-lower_case = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
-              'v', 'w', 'x', 'y', 'z']
-upper_case = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U',
-              'V', 'W', 'X', 'Y', 'Z']
-numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
+lower_case = list(string.ascii_lowercase)
+upper_case = list(string.ascii_uppercase)
+numbers = list(string.digits)
+symbols = list(string.punctuation)
 
 
 def password_generator():
+    """Inserts a random password in the password entry."""
     password = [random.choice(lower_case) for _ in range(8)] + [random.choice(upper_case) for _ in range(2)] \
                + [random.choice(numbers) for _ in range(3)] + [random.choice(symbols) for _ in range(2)]
     random.shuffle(password)
@@ -31,6 +31,7 @@ def password_generator():
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 
 def save_password():
+    """Save inserted details in "password-saved.json\"."""
     global cur_data
     website = website_entry.get().upper()
     email = email_entry.get()
@@ -76,6 +77,7 @@ def save_password():
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 
 def search():
+    """Search for stored details for website in the entry."""
     website = website_entry.get().upper()
     if len(website) == 0:
         messagebox.showinfo(message="Please make sure to fill out the Website field!")
