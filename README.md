@@ -11,3 +11,7 @@ Useful password managing tool.
 - Searches log-in details you have previously stored, when the website name inserted.
 - Copies the password into your clipboard when storing and searching details.
 
+## Install
+
+You need to have pyperclip installed.
+`pip install pyperclip` on cmd, then simply run the project!
