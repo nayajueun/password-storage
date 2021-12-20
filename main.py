@@ -74,7 +74,7 @@ def save_password():
         password_entry.delete(0, END)
 
 
-# ---------------------------- SAVE PASSWORD ------------------------------- #
+# ---------------------------- SEARCH FOR PASSWORD ------------------------------- #
 
 def search():
     """Search for stored details for website in the entry."""
